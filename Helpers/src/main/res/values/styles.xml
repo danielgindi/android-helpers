@@ -1,0 +1,8 @@
+<resources>
+
+    <style name="FilterBarAnimation">
+        <item name="android:windowEnterAnimation">@anim/scale_down_in</item>
+        <item name="android:windowExitAnimation">@null</item>
+    </style>
+
+</resources>

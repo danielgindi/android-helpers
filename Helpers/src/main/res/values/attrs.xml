@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomFontFamily">
+        <attr name="customFontFamily" format="string"/>
+        <attr name="customFontFamily_en_US" format="string"/>
+        <attr name="customFontFamily_he_IL" format="string"/>
+    </declare-styleable>
+</resources>
