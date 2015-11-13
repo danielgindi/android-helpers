@@ -2,7 +2,6 @@ package com.dg.helpers;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -79,7 +78,8 @@ public class ActivityResultHelper
         parentActivity.startActivityForResult(intent, requestCode, options);
     }
 
-    public static void startActivityForResult(@NonNull Fragment parentFragment,
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static void startActivityForResult(@NonNull android.app.Fragment parentFragment,
                                               Intent intent, ActivityResultListener resultListener)
     {
         int requestCode = generateRequestCodeForActivity();
@@ -88,13 +88,21 @@ public class ActivityResultHelper
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public static void startActivityForResult(@NonNull Fragment parentFragment,
+    public static void startActivityForResult(@NonNull android.app.Fragment parentFragment,
                                               Intent intent, ActivityResultListener resultListener,
                                               @Nullable Bundle options)
     {
         int requestCode = generateRequestCodeForActivity();
         listenForActivityResult(requestCode, resultListener);
         parentFragment.startActivityForResult(intent, requestCode, options);
+    }
+
+    public static void startActivityForResult(@NonNull android.support.v4.app.Fragment parentFragment,
+                                              Intent intent, ActivityResultListener resultListener)
+    {
+        int requestCode = generateRequestCodeForActivity();
+        listenForActivityResult(requestCode, resultListener);
+        parentFragment.startActivityForResult(intent, requestCode);
     }
 
     public static void startActivityFromChild(@NonNull Activity parentActivity,
