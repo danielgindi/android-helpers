@@ -14,4 +14,19 @@ public class DoubleHelper
         else if (value instanceof Short) return (double) (Short) value;
         else return null;
     }
+
+    public static float[] toArray(Float[] inArray)
+    {
+        float[] array = new float[inArray.length];
+        for (int i = 0, len = inArray.length; i < len; i++)
+        {
+            Float value = inArray[i];
+
+            if (value != null)
+            {
+                array[i] = value;
+            }
+        }
+        return array;
+    }
 }

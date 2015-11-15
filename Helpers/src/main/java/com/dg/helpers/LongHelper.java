@@ -13,4 +13,19 @@ public class LongHelper
         else if (value instanceof Short) return (long) (Short) value;
         else return null;
     }
+
+    public static long[] toArray(Long[] inArray)
+    {
+        long[] array = new long[inArray.length];
+        for (int i = 0, len = inArray.length; i < len; i++)
+        {
+            Long value = inArray[i];
+
+            if (value != null)
+            {
+                array[i] = value;
+            }
+        }
+        return array;
+    }
 }
