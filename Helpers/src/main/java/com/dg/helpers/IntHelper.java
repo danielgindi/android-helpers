@@ -13,6 +13,14 @@ public class IntHelper
         else return null;
     }
 
+    public static Integer withObject(Object value, int defaultValue)
+    {
+        if (value == null) return defaultValue;
+        else if (value instanceof Integer) return (Integer)value;
+        else if (value instanceof Short) return (int) (Short) value;
+        else return defaultValue;
+    }
+
     public static int[] toArray(Integer[] inArray)
     {
         int[] array = new int[inArray.length];

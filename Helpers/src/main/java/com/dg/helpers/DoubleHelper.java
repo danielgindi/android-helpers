@@ -15,6 +15,16 @@ public class DoubleHelper
         else return null;
     }
 
+    public static Double withObject(Object value, double defaultValue)
+    {
+        if (value == null) return defaultValue;
+        else if (value instanceof Double) return (Double)value;
+        else if (value instanceof Float) return (double) (Float) value;
+        else if (value instanceof Integer) return (double) (Integer) value;
+        else if (value instanceof Short) return (double) (Short) value;
+        else return defaultValue;
+    }
+
     public static float[] toArray(Float[] inArray)
     {
         float[] array = new float[inArray.length];

@@ -14,6 +14,15 @@ public class LongHelper
         else return null;
     }
 
+    public static Long withObject(Object value, long defaultValue)
+    {
+        if (value == null) return defaultValue;
+        else if (value instanceof Long) return (Long)value;
+        else if (value instanceof Integer) return (long) (Integer) value;
+        else if (value instanceof Short) return (long) (Short) value;
+        else return defaultValue;
+    }
+
     public static long[] toArray(Long[] inArray)
     {
         long[] array = new long[inArray.length];
