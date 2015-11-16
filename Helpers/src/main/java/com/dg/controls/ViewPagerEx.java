@@ -25,14 +25,14 @@ public class ViewPagerEx extends ViewPager
     {
         super(context, attrs);
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ViewPager);
+        TypedArray styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.ViewPager);
         try
         {
-            mSwipeEnabled = a.getBoolean(R.styleable.ViewPager_swipeEnabled, true);
+            mSwipeEnabled = styledAttributes.getBoolean(R.styleable.ViewPager_swipeEnabled, true);
         }
         finally
         {
-            a.recycle();
+            styledAttributes.recycle();
         }
     }
 
