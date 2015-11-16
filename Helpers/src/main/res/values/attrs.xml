@@ -5,4 +5,7 @@
         <attr name="customFontFamily_en_US" format="string"/>
         <attr name="customFontFamily_he_IL" format="string"/>
     </declare-styleable>
+    <declare-styleable name="ViewPager">
+        <attr name="swipeEnabled" format="boolean"/>
+    </declare-styleable>
 </resources>
