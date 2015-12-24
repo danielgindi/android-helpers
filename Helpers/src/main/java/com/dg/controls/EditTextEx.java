@@ -35,15 +35,24 @@ public class EditTextEx extends android.widget.EditText
 
     private void setCustomFontFamily(Context context, AttributeSet attrs)
     {
+        if (isInEditMode())
+        {
+            return;
+        }
+
         String fontFamily = null;
-        TypedArray styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.CustomFontFamily);
+        TypedArray styledAttributes = null;
         try
         {
+            styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.CustomFontFamily);
             fontFamily = styledAttributes.getString(R.styleable.CustomFontFamily_customFontFamily);
         }
         finally
         {
-            styledAttributes.recycle();
+            if (styledAttributes != null)
+            {
+                styledAttributes.recycle();
+            }
         }
 
         if (fontFamily != null && !fontFamily.isEmpty())
