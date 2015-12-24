@@ -33,13 +33,31 @@ public class FontHelper
         _context = context;
     }
 
+    /**
+     * Loads the font using the default <code>sharedInstance()</code>.
+     * This caches the fonts for reuse.
+     * @param fontFamily
+     * @return The loaded Typeface or null if failed.
+     */
     public Typeface getFont(String fontFamily)
     {
-        Typeface typeface = _fontCache.get(fontFamily);
+        return getFont(fontFamily, true, true);
+    }
+
+    /**
+     * Loads the font using the default <code>sharedInstance()</code>.
+     * @param fontFamily
+     * @param loadFromCache Should the font be loaded from cache?
+     * @param saveToCache Should the font be saved to cache?
+     * @return The loaded Typeface or null if failed.
+     */
+    public Typeface getFont(String fontFamily, boolean loadFromCache, boolean saveToCache)
+    {
+        Typeface typeface = loadFromCache ? _fontCache.get(fontFamily) : null;
         if (typeface == null)
         {
-            typeface = loadFont(_context, fontFamily);
-            if (typeface != null)
+            typeface = loadFontFromAssets(_context, fontFamily);
+            if (saveToCache && typeface != null)
             {
                 _fontCache.put(fontFamily, typeface);
             }
@@ -47,7 +65,41 @@ public class FontHelper
         return typeface;
     }
 
-    public static Typeface loadFont(Context context, String fontFamily)
+    /**
+     * Loads the font using the default <code>sharedInstance()</code>.
+     * This caches the fonts for reuse.
+     * @param context
+     * @param fontFamily
+     * @return The loaded Typeface or null if failed.
+     */
+    public static Typeface getFont(Context context, String fontFamily)
+    {
+        return sharedInstance(context).getFont(fontFamily);
+    }
+
+    /**
+     * Loads the font using the default <code>sharedInstance()</code>.
+     * @param context
+     * @param fontFamily
+     * @param loadFromCache Should the font be loaded from cache?
+     * @param saveToCache Should the font be saved to cache?
+     * @return The loaded Typeface or null if failed.
+     */
+    public static Typeface getFont(Context context,
+                                   String fontFamily,
+                                   boolean loadFromCache,
+                                   boolean saveToCache)
+    {
+        return sharedInstance(context).getFont(fontFamily, loadFromCache, saveToCache);
+    }
+
+    /**
+     * Loads the font directly from the Assets. No caching done here.
+     * @param context
+     * @param fontFamily
+     * @return The loaded Typeface or null if failed.
+     */
+    private static Typeface loadFontFromAssets(Context context, String fontFamily)
     {
         if (!fontFamily.contains(".") && !fontFamily.contains("/"))
         {
