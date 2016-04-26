@@ -1,5 +1,7 @@
 package com.dg.helpers;
 
+import android.text.format.DateUtils;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -47,5 +49,10 @@ public class DateHelper
                 day2 = calendar.get(Calendar.DATE);
 
         return year1 == year2 && month1 == month2 && day1 == day2;
+    }
+
+    public static boolean isToday(Date date)
+    {
+        return DateUtils.isToday(date.getTime());
     }
 }
