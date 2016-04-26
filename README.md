@@ -12,6 +12,7 @@ Features:
 * Helpers for working with `JSONObject` and `JSONArray`
 * Helpers for working with locations
 * Helpers for working with Parcels. Mainly encoding/decoding more safely, preserving `null` status of properties.
+* Helpers for working with Views (i.e. cause a re-layout *now* instead of in the next ui thread loop)
 * `ActivityResultHelper` for simplifying starting activities with result codes (No more spaghetti code in MainActivity...)
 * `RuntimePermissionHelper` for simplifying permission requests on Android 6.0 (Marshmallow)
 * `SpannableStringBuilderEx` with more help adding spannables
@@ -29,13 +30,13 @@ Checkout [httprequest](https://github.com/danielgindi/android-httprequest) for w
 
 ## Dependency
 
-[Download from Maven Central (.aar)](https://oss.sonatype.org/index.html#view-repositories;releases~browsestorage~/com/github/danielgindi/helpers/1.1.0/helpers-1.1.1.aar)
+[Download from Maven Central (.aar)](https://oss.sonatype.org/index.html#view-repositories;releases~browsestorage~/com/github/danielgindi/helpers/1.1.1/helpers-1.1.1.aar)
 
 **or**
 
 ```java
 	dependencies {
-    	compile 'com.github.danielgindi:helpers:1.1.0'
+    	compile 'com.github.danielgindi:helpers:1.1.1'
 	}
 ```
 
