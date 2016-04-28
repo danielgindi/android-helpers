@@ -30,13 +30,13 @@ Checkout [httprequest](https://github.com/danielgindi/android-httprequest) for w
 
 ## Dependency
 
-[Download from Maven Central (.aar)](https://oss.sonatype.org/index.html#view-repositories;releases~browsestorage~/com/github/danielgindi/helpers/1.1.1/helpers-1.1.1.aar)
+[Download from Maven Central (.aar)](https://oss.sonatype.org/index.html#view-repositories;releases~browsestorage~/com/github/danielgindi/helpers/1.1.2/helpers-1.1.1.aar)
 
 **or**
 
 ```java
 	dependencies {
-    	compile 'com.github.danielgindi:helpers:1.1.1'
+    	compile 'com.github.danielgindi:helpers:1.1.2'
 	}
 ```
 
