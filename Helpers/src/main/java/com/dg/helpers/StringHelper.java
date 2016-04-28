@@ -16,24 +16,26 @@ public class StringHelper
         else if (value instanceof String) return (String)value;
         else if (value instanceof Double)
         {
-            if ((Double)value == (long)value)
+            double d = (Double)value;
+            if ((Double)value == (long)d)
             {
-                return ((Long)(long)value).toString();
+                return ((Long)(long)d).toString();
             }
             else
             {
-                return getCleanDecimalFormatter().format((double)value);
+                return getCleanDecimalFormatter().format(d);
             }
         }
         else if (value instanceof Float)
         {
-            if ((Float)value == (long)value)
+            float d = (Float)value;
+            if ((Float)value == (long)d)
             {
-                return ((Long)(long)value).toString();
+                return ((Long)(long)d).toString();
             }
             else
             {
-                return getCleanDecimalFormatter().format((float)value);
+                return getCleanDecimalFormatter().format(d);
             }
         }
         else return value.toString();
@@ -45,24 +47,26 @@ public class StringHelper
         else if (value instanceof String) return (String)value;
         else if (value instanceof Double)
         {
-            if ((Double)value == (long)value)
+            double d = (Double)value;
+            if ((Double)value == (long)d)
             {
-                return ((Long)(long)value).toString();
+                return ((Long)(long)d).toString();
             }
             else
             {
-                return getCleanDecimalFormatter().format((double)value);
+                return getCleanDecimalFormatter().format(d);
             }
         }
         else if (value instanceof Float)
         {
-            if ((Float)value == (long)value)
+            float d = (Float)value;
+            if ((Float)value == (long)d)
             {
-                return ((Long)(long)value).toString();
+                return ((Long)(long)d).toString();
             }
             else
             {
-                return getCleanDecimalFormatter().format((float)value);
+                return getCleanDecimalFormatter().format(d);
             }
         }
         else return value.toString();
