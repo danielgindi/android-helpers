@@ -223,4 +223,34 @@ public class FileHelper
             throw new IOException(String.format("'to' file was cannot be created (%s).", to.toString()));
         }
     }
+
+    /**
+     * Return the extension of the path, from the last '.' to end of string in the last portion of the path.
+     * If there is no '.' in the last portion of the path or the first character of it is '.', then it returns an empty string.
+     * @param filePath File path to retrieve extension from
+     * @return i.e. ".jpg", ".gz", ""
+     */
+    public static String getExtension(String filePath)
+    {
+        int i = filePath.lastIndexOf('.');
+        int p = Math.max(filePath.lastIndexOf('/'), filePath.lastIndexOf('\\'));
+
+        if (i > p)
+        {
+            return filePath.substring(i);
+        }
+
+        return "";
+    }
+
+    /**
+     * Return the extension of the path, from the last '.' to end of string in the last portion of the path.
+     * If there is no '.' in the last portion of the path or the first character of it is '.', then it returns an empty string.
+     * @param file File path to retrieve extension from
+     * @return i.e. ".jpg", ".gz", ""
+     */
+    public static String getExtension(File file)
+    {
+        return getExtension(file.getName());
+    }
 }
