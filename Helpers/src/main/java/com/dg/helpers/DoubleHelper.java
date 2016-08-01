@@ -12,7 +12,12 @@ public class DoubleHelper
         else if (value instanceof Float) return (double) (Float) value;
         else if (value instanceof Integer) return (double) (Integer) value;
         else if (value instanceof Short) return (double) (Short) value;
-        else return null;
+        else if (value instanceof String)
+        {
+            try { return Double.parseDouble((String) value); }
+            catch (Exception ignored) { }
+        }
+        return null;
     }
 
     public static Double withObject(Object value, double defaultValue)
@@ -22,7 +27,12 @@ public class DoubleHelper
         else if (value instanceof Float) return (double) (Float) value;
         else if (value instanceof Integer) return (double) (Integer) value;
         else if (value instanceof Short) return (double) (Short) value;
-        else return defaultValue;
+        else if (value instanceof String)
+        {
+            try { return Double.parseDouble((String) value); }
+            catch (Exception ignored) { }
+        }
+        return defaultValue;
     }
 
     public static float[] toArray(Float[] inArray)

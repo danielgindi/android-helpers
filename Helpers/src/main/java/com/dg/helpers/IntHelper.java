@@ -10,7 +10,12 @@ public class IntHelper
         if (value == null) return null;
         else if (value instanceof Integer) return (Integer)value;
         else if (value instanceof Short) return (int) (Short) value;
-        else return null;
+        else if (value instanceof String)
+        {
+            try { return Integer.parseInt((String) value); }
+            catch (Exception ignored) { }
+        }
+        return null;
     }
 
     public static Integer withObject(Object value, int defaultValue)
@@ -18,7 +23,12 @@ public class IntHelper
         if (value == null) return defaultValue;
         else if (value instanceof Integer) return (Integer)value;
         else if (value instanceof Short) return (int) (Short) value;
-        else return defaultValue;
+        else if (value instanceof String)
+        {
+            try { return Integer.parseInt((String) value); }
+            catch (Exception ignored) { }
+        }
+        return defaultValue;
     }
 
     public static int[] toArray(Integer[] inArray)

@@ -11,7 +11,12 @@ public class LongHelper
         else if (value instanceof Long) return (Long)value;
         else if (value instanceof Integer) return (long) (Integer) value;
         else if (value instanceof Short) return (long) (Short) value;
-        else return null;
+        else if (value instanceof String)
+        {
+            try { return Long.parseLong((String) value); }
+            catch (Exception ignored) { }
+        }
+        return null;
     }
 
     public static Long withObject(Object value, long defaultValue)
@@ -20,7 +25,12 @@ public class LongHelper
         else if (value instanceof Long) return (Long)value;
         else if (value instanceof Integer) return (long) (Integer) value;
         else if (value instanceof Short) return (long) (Short) value;
-        else return defaultValue;
+        else if (value instanceof String)
+        {
+            try { return Long.parseLong((String) value); }
+            catch (Exception ignored) { }
+        }
+        return defaultValue;
     }
 
     public static long[] toArray(Long[] inArray)

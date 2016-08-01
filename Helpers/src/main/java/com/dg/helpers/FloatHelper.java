@@ -12,7 +12,12 @@ public class FloatHelper
         else if (value instanceof Float) return (Float)value;
         else if (value instanceof Integer) return (float) (Integer) value;
         else if (value instanceof Short) return (float) (Short) value;
-        else return null;
+        else if (value instanceof String)
+        {
+            try { return Float.parseFloat((String) value); }
+            catch (Exception ignored) { }
+        }
+        return null;
     }
 
     public static Float withObject(Object value, float defaultValue)
@@ -22,7 +27,12 @@ public class FloatHelper
         else if (value instanceof Float) return (Float)value;
         else if (value instanceof Integer) return (float) (Integer) value;
         else if (value instanceof Short) return (float) (Short) value;
-        else return defaultValue;
+        else if (value instanceof String)
+        {
+            try { return Float.parseFloat((String) value); }
+            catch (Exception ignored) { }
+        }
+        return defaultValue;
     }
 
     public static float[] toArray(Float[] inArray)
