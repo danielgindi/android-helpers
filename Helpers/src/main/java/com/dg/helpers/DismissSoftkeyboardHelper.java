@@ -23,26 +23,29 @@ public class DismissSoftkeyboardHelper
     {
         if (view == null) return;
 
-        if (!(view instanceof EditText) &&
-                !(view instanceof Button) &&
-                !(view instanceof ImageButton) &&
-                !(view instanceof Checkable) &&
-                !(view instanceof DatePicker) &&
-                !(view instanceof AdapterView) &&
-                !(view instanceof android.widget.NumberPicker) &&
-                !(view instanceof android.widget.RadioGroup) &&
-                !(view instanceof android.widget.TimePicker) &&
-                !(view instanceof android.widget.Toolbar))
+        if ((view instanceof EditText) ||
+                (view instanceof Button) ||
+                (view instanceof ImageButton) ||
+                (view instanceof Checkable) ||
+                (view instanceof DatePicker) ||
+                (view instanceof AdapterView) ||
+                (view instanceof android.widget.NumberPicker) ||
+                (view instanceof android.widget.RadioGroup) ||
+                (view instanceof android.widget.TimePicker) ||
+                (view instanceof android.widget.Toolbar) ||
+                (view.getClass().getSimpleName().equals("TextInputLayout")))
         {
-            view.setOnTouchListener(new View.OnTouchListener()
-            {
-                public boolean onTouch(View v, MotionEvent event)
-                {
-                    hideSoftKeyboard(context);
-                    return false;
-                }
-            });
+            return;
         }
+
+        view.setOnTouchListener(new View.OnTouchListener()
+        {
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                hideSoftKeyboard(context);
+                return false;
+            }
+        });
 
         if (view instanceof ViewGroup)
         {
