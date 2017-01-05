@@ -6,7 +6,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.Checkable;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 /**
  * Created by Daniel Cohen Gindi (danielgindi@gmail.com)
@@ -18,7 +23,16 @@ public class DismissSoftkeyboardHelper
     {
         if (view == null) return;
 
-        if (!(view instanceof EditText))
+        if (!(view instanceof EditText) &&
+                !(view instanceof Button) &&
+                !(view instanceof ImageButton) &&
+                !(view instanceof Checkable) &&
+                !(view instanceof DatePicker) &&
+                !(view instanceof AdapterView) &&
+                !(view instanceof android.widget.NumberPicker) &&
+                !(view instanceof android.widget.RadioGroup) &&
+                !(view instanceof android.widget.TimePicker) &&
+                !(view instanceof android.widget.Toolbar))
         {
             view.setOnTouchListener(new View.OnTouchListener()
             {
