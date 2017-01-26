@@ -15,8 +15,10 @@ Features:
 * Helpers for working with Views (i.e. cause a re-layout *now* instead of in the next ui thread loop)
 * `ActivityResultHelper` for simplifying starting activities with result codes (No more spaghetti code in MainActivity...)
 * `RuntimePermissionHelper` for simplifying permission requests on Android 6.0 (Marshmallow)
+* `FragmentTransitionHelper` for acquiring default transition animation for `Fragment`s
 * `SpannableStringBuilderEx` with more help adding spannables
 * `CustomTypefaceSpannable` for having a SpannableString with real custom TypeFaces
+* `SchedulerHandler` - a `Handler` with scheduling methods
 * Controls that support custom typefaces for (`ButtonEx`, `EditTextEx`, `TextViewEx`)
 * A `SwipeRefreshLayout` subclass that makes `setRefreshing(...)` more safe, deferring until after `onMeasure` is called.
 * Animations for *resizing* a `View` or a `PopupView`, instead of relative scaling
@@ -30,13 +32,13 @@ Checkout [httprequest](https://github.com/danielgindi/android-httprequest) for w
 
 ## Dependency
 
-[Download from Maven Central (.aar)](https://oss.sonatype.org/index.html#view-repositories;releases~browsestorage~/com/github/danielgindi/helpers/1.1.8/helpers-1.1.8.aar)
+[Download from Maven Central (.aar)](https://oss.sonatype.org/index.html#view-repositories;releases~browsestorage~/com/github/danielgindi/helpers/1.3.0/helpers-1.3.0.aar)
 
 **or**
 
 ```java
 	dependencies {
-    	compile 'com.github.danielgindi:helpers:1.1.8'
+    	compile 'com.github.danielgindi:helpers:1.3.0'
 	}
 ```
 
