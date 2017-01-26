@@ -37,7 +37,10 @@ public class ActivityResultHelper
 
     public static void listenForActivityResult(int requestCode, ActivityResultListener resultListener)
     {
-        mActivityResultListeners.put(requestCode, resultListener);
+        if (resultListener != null)
+        {
+            mActivityResultListeners.put(requestCode, resultListener);
+        }
     }
 
     public static void stopListeningForActivityResult(int requestCode, ActivityResultListener resultListener)
@@ -55,7 +58,6 @@ public class ActivityResultHelper
         ActivityResultListener listener = mActivityResultListeners.remove(requestCode);
         if (listener != null)
         {
-            mActivityResultListeners.remove(listener);
             listener.onActivityResult(resultCode, intent);
         }
     }
