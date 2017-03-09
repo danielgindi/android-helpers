@@ -2,6 +2,7 @@ package com.dg.helpers;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,17 +24,21 @@ public class DismissSoftkeyboardHelper
     {
         if (view == null) return;
 
+        String viewPackageName = view.getClass().getPackage().getName();
+        String viewClassName = view.getClass().getSimpleName();
+
         if ((view instanceof EditText) ||
                 (view instanceof Button) ||
                 (view instanceof ImageButton) ||
                 (view instanceof Checkable) ||
                 (view instanceof DatePicker) ||
                 (view instanceof AdapterView) ||
-                (view instanceof android.widget.NumberPicker) ||
+                (Build.VERSION.SDK_INT >= 11 && view instanceof android.widget.NumberPicker) ||
                 (view instanceof android.widget.RadioGroup) ||
                 (view instanceof android.widget.TimePicker) ||
-                (view instanceof android.widget.Toolbar) ||
-                (view.getClass().getSimpleName().equals("TextInputLayout")))
+                (Build.VERSION.SDK_INT >= 21 && view instanceof android.widget.Toolbar) ||
+                (viewPackageName.equals("android.widget") && viewClassName.equals("Toolbar")) ||
+                (viewClassName.equals("TextInputLayout")))
         {
             return;
         }
