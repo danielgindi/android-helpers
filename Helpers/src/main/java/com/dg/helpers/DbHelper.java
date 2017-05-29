@@ -7,24 +7,15 @@ import android.database.sqlite.SQLiteDatabase;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
-/**
- * Created by Daniel Cohen Gindi (danielgindi@gmail.com)
- */
 public class DbHelper
 {
-    private static SimpleDateFormat _utcIsoDateFormatter;
     public static SimpleDateFormat utcIsoDateFormatter()
     {
-        if (_utcIsoDateFormatter == null)
-        {
-            TimeZone utcTimezone = TimeZone.getTimeZone("GMT");
-            _utcIsoDateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-            _utcIsoDateFormatter.setTimeZone(utcTimezone);
-        }
-        return _utcIsoDateFormatter;
+        return DateHelper.utcIsoDateFormatter();
     }
 
     public static String getDateForDbFromDate(Date date, boolean escape)
@@ -33,11 +24,11 @@ public class DbHelper
         {
             if (escape)
             {
-                return "'" + utcIsoDateFormatter().format(date) + "'";
+                return "'" + DateHelper.utcIsoDateFormatter().format(date) + "'";
             }
             else
             {
-                return utcIsoDateFormatter().format(date);
+                return DateHelper.utcIsoDateFormatter().format(date);
             }
         }
         else
@@ -61,7 +52,7 @@ public class DbHelper
         }
         try
         {
-            return utcIsoDateFormatter().parse(date);
+            return DateHelper.utcIsoDateFormatter().parse(date);
         }
         catch (ParseException ignored)
         {

@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 /**
@@ -14,18 +15,29 @@ import java.util.TimeZone;
  */
 public class DateHelper
 {
+    private static ThreadLocal<SimpleDateFormat> _utcIsoDateFormatter = new ThreadLocal<>();
+
+    public static SimpleDateFormat utcIsoDateFormatter()
+    {
+        if (_utcIsoDateFormatter.get() == null)
+        {
+            TimeZone utcTimezone = TimeZone.getTimeZone("GMT");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
+            format.setTimeZone(utcTimezone);
+            _utcIsoDateFormatter.set(format);
+        }
+        return _utcIsoDateFormatter.get();
+    }
+
     public static Date withObject(Object value)
     {
         if (value == null) return null;
         if (value instanceof Date) return (Date)value;
         else
         {
-            final TimeZone utcTimezone = TimeZone.getTimeZone("GMT");
-            final DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-            df.setTimeZone(utcTimezone);
             try
             {
-                return df.parse(value.toString());
+                return utcIsoDateFormatter().parse(value.toString());
             }
             catch (ParseException e)
             {
