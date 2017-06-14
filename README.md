@@ -38,7 +38,7 @@ Checkout [httprequest](https://github.com/danielgindi/android-httprequest) for w
 
 ```java
 	dependencies {
-    	compile 'com.github.danielgindi:helpers:1.3.2'
+    	compile 'com.github.danielgindi:helpers:1.3.3'
 	}
 ```
 
