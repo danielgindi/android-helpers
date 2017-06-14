@@ -12,8 +12,8 @@ buildscript {
     }
 }
 
-def isReleaseBuild() {
-    return version.contains("SNAPSHOT") == false
+plugins {
+    id 'io.codearte.nexus-staging' version '0.9.0'
 }
 
 allprojects {
