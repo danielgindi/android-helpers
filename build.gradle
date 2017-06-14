@@ -27,3 +27,18 @@ allprojects {
 }
 
 apply plugin: 'android-reporting'
+
+def getRepositoryUsername() {
+    return hasProperty('NEXUS_USERNAME') ? NEXUS_USERNAME : ""
+}
+
+def getRepositoryPassword() {
+    return hasProperty('NEXUS_PASSWORD') ? NEXUS_PASSWORD : ""
+}
+
+nexusStaging {
+    packageGroup = GROUP
+    stagingProfileId = POM_DEVELOPER_ID
+    username = getRepositoryUsername()
+    username = getRepositoryPassword()
+}
