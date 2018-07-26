@@ -22,9 +22,9 @@ allprojects {
     group = GROUP
 
     repositories {
+        google()
         jcenter()
         mavenCentral()
-        google()
     }
 }
 
