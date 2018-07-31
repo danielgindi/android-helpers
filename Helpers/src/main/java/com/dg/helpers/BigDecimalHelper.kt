@@ -18,4 +18,9 @@ object BigDecimalHelper
             else -> null
         }
     }
+
+    fun withObject(value: Any?, defaultValue: BigDecimal): BigDecimal
+    {
+        return withObject(value) ?: defaultValue
+    }
 }

@@ -59,36 +59,7 @@ object StringHelper
 
     fun withObject(value: Any?, defaultValue: String): String
     {
-        when (value)
-        {
-            null -> return defaultValue
-            is String -> return value
-            is Double ->
-            {
-                val d = (value as Double?)!!
-                return if (d.toLong().toDouble() == value as Double?)
-                {
-                    d.toLong().toString()
-                }
-                else
-                {
-                    cleanDecimalFormatter.format(d)
-                }
-            }
-            is Float ->
-            {
-                val d = (value as Float?)!!
-                return if (d.toLong().toFloat() == value as Float?)
-                {
-                    d.toLong().toString()
-                }
-                else
-                {
-                    cleanDecimalFormatter.format(d.toDouble())
-                }
-            }
-            else -> return value.toString()
-        }
+        return withObject(value) ?: defaultValue
     }
 
     fun isValidEmailAddress(email: String): Boolean

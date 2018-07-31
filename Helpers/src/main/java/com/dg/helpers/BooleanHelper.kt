@@ -16,13 +16,6 @@ object BooleanHelper
 
     fun withObject(value: Any?, defaultValue: Boolean): Boolean
     {
-        return when (value)
-        {
-            null -> defaultValue
-            is Boolean -> value
-            is Int -> value != 0
-            is Short -> value != 0
-            else -> defaultValue
-        }
+        return withObject(value) ?: defaultValue
     }
 }

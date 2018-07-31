@@ -22,24 +22,9 @@ object DoubleHelper
         return null
     }
 
-    fun withObject(value: Any?, defaultValue: Double): Double?
+    fun withObject(value: Any?, defaultValue: Double): Double
     {
-        when (value)
-        {
-            null -> return defaultValue
-            is Double -> return value
-            is Float -> return value.toDouble()
-            is Int -> return value.toDouble()
-            is Short -> return value.toDouble()
-            is String -> try
-            {
-                return java.lang.Double.parseDouble(value as String?)
-            }
-            catch (ignored: Exception)
-            {
-            }
-        }
-        return defaultValue
+        return withObject(value) ?: defaultValue
     }
 
     fun toArray(inArray: Array<Float?>): FloatArray

@@ -20,22 +20,9 @@ object IntHelper
         return null
     }
 
-    fun withObject(value: Any?, defaultValue: Int): Int?
+    fun withObject(value: Any?, defaultValue: Int): Int
     {
-        when (value)
-        {
-            null -> return defaultValue
-            is Int -> return value
-            is Short -> return value.toInt()
-            is String -> try
-            {
-                return Integer.parseInt(value)
-            }
-            catch (ignored: Exception)
-            {
-            }
-        }
-        return defaultValue
+        return withObject(value) ?: defaultValue
     }
 
     fun toArray(inArray: Array<Int?>): IntArray
