@@ -51,9 +51,15 @@ class ButtonEx : android.support.v7.widget.AppCompatButton
         }
     }
 
+    @Deprecated("This version was a mistake", replaceWith = ReplaceWith("setCustomFont(fontFamily)"))
     fun setCustomFont(context: Context, fontFamily: String): Boolean
     {
-        val typeface: Typeface? = FontHelper.sharedInstance(context).getFont(fontFamily)
+        return setCustomFont(fontFamily)
+    }
+
+    fun setCustomFont(fontFamily: String): Boolean
+    {
+        val typeface: Typeface? = FontHelper.getFont(context, fontFamily)
         return if (typeface != null)
         {
             setTypeface(typeface)

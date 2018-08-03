@@ -12,61 +12,24 @@ import java.util.HashMap
  * - it will search for assets/fonts/[fontname].[ttf|otf]
  */
 @Suppress("unused")
-class FontHelper private constructor(private val _context: Context)
+class FontHelper private constructor()
 {
-    private val _fontCache = HashMap<String, Typeface>()
-
-    /**
-     * Loads the font using the default `sharedInstance()`.
-     * @param fontFamily
-     * @param loadFromCache Should the font be loaded from cache?
-     * @param saveToCache Should the font be saved to cache?
-     * @return The loaded Typeface or null if failed.
-     */
-    @JvmOverloads
-    fun getFont(fontFamily: String,
-                loadFromCache: Boolean = true,
-                saveToCache: Boolean = true): Typeface?
-    {
-        var typeface: Typeface? = if (loadFromCache) _fontCache[fontFamily] else null
-        if (typeface == null)
-        {
-            typeface = loadFontFromAssets(_context, fontFamily)
-            if (saveToCache && typeface != null)
-            {
-                _fontCache[fontFamily] = typeface
-            }
-        }
-        return typeface
-    }
-
     companion object
     {
-        private var _instance: FontHelper? = null
+        private val sFontCache = HashMap<String, Typeface>()
 
-        fun sharedInstance(context: Context): FontHelper
+        fun clearCache()
         {
-            if (_instance == null)
-            {
-                _instance = FontHelper(context.applicationContext)
-            }
-            return _instance!!
+            sFontCache.clear()
         }
 
-        /**
-         * Loads the font using the default `sharedInstance()`.
-         * This caches the fonts for reuse.
-         * @param context
-         * @param fontFamily
-         * @return The loaded Typeface or null if failed.
-         */
-        fun getFont(context: Context, fontFamily: String): Typeface?
+        fun cacheSize(): Int
         {
-            return sharedInstance(context).getFont(fontFamily)
+            return sFontCache.size
         }
-
+        
         /**
-         * Loads the font using the default `sharedInstance()`.
+         * Loads the font with possible use of the static cache
          * @param context
          * @param fontFamily
          * @param loadFromCache Should the font be loaded from cache?
@@ -75,10 +38,19 @@ class FontHelper private constructor(private val _context: Context)
          */
         fun getFont(context: Context,
                     fontFamily: String,
-                    loadFromCache: Boolean,
-                    saveToCache: Boolean): Typeface?
+                    loadFromCache: Boolean = true,
+                    saveToCache: Boolean = true): Typeface?
         {
-            return sharedInstance(context).getFont(fontFamily, loadFromCache, saveToCache)
+            var typeface: Typeface? = if (loadFromCache) sFontCache[fontFamily] else null
+            if (typeface == null)
+            {
+                typeface = loadFontFromAssets(context, fontFamily)
+                if (saveToCache && typeface != null)
+                {
+                    sFontCache[fontFamily] = typeface
+                }
+            }
+            return typeface
         }
 
         /**
@@ -126,9 +98,3 @@ class FontHelper private constructor(private val _context: Context)
         }
     }
 }
-/**
- * Loads the font using the default `sharedInstance()`.
- * This caches the fonts for reuse.
- * @param fontFamily
- * @return The loaded Typeface or null if failed.
- */
