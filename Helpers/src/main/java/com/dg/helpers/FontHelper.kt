@@ -11,6 +11,7 @@ import java.util.HashMap
  * If the path specified does not contain path and extension
  * - it will search for assets/fonts/[fontname].[ttf|otf]
  */
+@Suppress("unused")
 class FontHelper private constructor(private val _context: Context)
 {
     private val _fontCache = HashMap<String, Typeface>()

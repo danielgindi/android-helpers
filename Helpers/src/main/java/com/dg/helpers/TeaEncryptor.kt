@@ -7,6 +7,7 @@ import java.util.ArrayList
 import android.util.Base64
 import android.util.Log
 
+@Suppress("unused")
 object TeaEncryptor
 {
     private fun bytesToLongs(s: ByteArray): MutableList<Int>

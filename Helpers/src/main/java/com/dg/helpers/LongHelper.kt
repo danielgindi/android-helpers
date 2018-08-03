@@ -1,5 +1,6 @@
 package com.dg.helpers
 
+@Suppress("unused")
 object LongHelper
 {
     fun withObject(value: Any?): Long?

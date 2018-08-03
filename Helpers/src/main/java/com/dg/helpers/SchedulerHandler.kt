@@ -5,6 +5,7 @@ import android.os.Looper
 
 import java.util.HashMap
 
+@Suppress("unused")
 class SchedulerHandler : Handler
 {
     private val mTasks = HashMap<Runnable, Runnable>()

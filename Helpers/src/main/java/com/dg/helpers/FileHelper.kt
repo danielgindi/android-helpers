@@ -10,6 +10,7 @@ import java.nio.channels.FileChannel
 /**
  * Utilities for handling Files
  */
+@Suppress("unused")
 object FileHelper
 {
     /**

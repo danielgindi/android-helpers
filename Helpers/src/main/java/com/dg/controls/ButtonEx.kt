@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import com.dg.R
 import com.dg.helpers.FontHelper
 
+@Suppress("unused")
 class ButtonEx : android.support.v7.widget.AppCompatButton
 {
     constructor(context: Context) : super(context)

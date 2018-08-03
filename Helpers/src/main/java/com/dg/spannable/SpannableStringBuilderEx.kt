@@ -4,6 +4,7 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 
+@Suppress("unused")
 class SpannableStringBuilderEx : SpannableStringBuilder
 {
     /**

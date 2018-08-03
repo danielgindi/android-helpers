@@ -20,6 +20,7 @@ import java.lang.reflect.Method
  * in case you had to override the default implementation for some reason.
  * (Android's default implementation is private access, so this gives public access).
  */
+@Suppress("unused")
 object FragmentTransitionHelper
 {
     const val ANIM_STYLE_OPEN_ENTER = 1

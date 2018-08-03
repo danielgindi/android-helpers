@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import com.dg.R
 import com.dg.helpers.FontHelper
 
+@Suppress("unused")
 class TextViewEx : android.support.v7.widget.AppCompatTextView
 {
     constructor(context: Context) : super(context)

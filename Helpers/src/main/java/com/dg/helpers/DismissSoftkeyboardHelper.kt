@@ -14,6 +14,7 @@ import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.ImageButton
 
+@Suppress("unused")
 object DismissSoftkeyboardHelper
 {
 

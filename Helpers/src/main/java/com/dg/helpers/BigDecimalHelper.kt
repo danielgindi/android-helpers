@@ -2,6 +2,7 @@ package com.dg.helpers
 
 import java.math.BigDecimal
 
+@Suppress("unused")
 object BigDecimalHelper
 {
     fun withObject(value: Any?): BigDecimal?

@@ -1,13 +1,14 @@
 package com.dg.runnable
 
+@Suppress("unused")
 abstract class RunnableWithArgument<T> : Runnable
 {
-    var runnableArgument: T? = null
+    var argument: T? = null
 
     override fun run()
     {
-        runWithArgument(runnableArgument)
+        runWithArgument(argument)
     }
 
-    abstract fun runWithArgument(runnableArgument: T?)
+    abstract fun runWithArgument(argument: T?)
 }

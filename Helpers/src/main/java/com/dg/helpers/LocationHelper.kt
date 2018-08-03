@@ -1,5 +1,6 @@
 package com.dg.helpers
 
+@Suppress("unused")
 object LocationHelper
 {
     private const val R = 6371.0

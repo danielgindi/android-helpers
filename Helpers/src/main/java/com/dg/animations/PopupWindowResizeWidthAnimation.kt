@@ -2,6 +2,7 @@ package com.dg.animations
 
 import android.widget.PopupWindow
 
+@Suppress("unused")
 class PopupWindowResizeWidthAnimation : PopupWindowResizeAnimation
 {
     /**

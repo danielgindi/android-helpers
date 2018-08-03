@@ -4,6 +4,7 @@ import android.view.animation.Animation
 import android.view.animation.Transformation
 import android.widget.PopupWindow
 
+@Suppress("unused")
 open class PopupWindowResizeAnimation : Animation
 {
     private val mPopupWindow: PopupWindow

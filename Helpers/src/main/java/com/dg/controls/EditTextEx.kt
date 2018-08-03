@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import com.dg.R
 import com.dg.helpers.FontHelper
 
+@Suppress("unused")
 class EditTextEx : android.support.v7.widget.AppCompatEditText
 {
     constructor(context: Context) : super(context)

@@ -5,6 +5,7 @@ import java.text.DecimalFormatSymbols
 import java.util.Locale
 import java.util.regex.Pattern
 
+@Suppress("unused")
 object StringHelper
 {
 

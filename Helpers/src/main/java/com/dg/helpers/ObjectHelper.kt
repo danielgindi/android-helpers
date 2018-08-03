@@ -2,6 +2,7 @@ package com.dg.helpers
 
 import org.json.JSONObject
 
+@Suppress("unused")
 object ObjectHelper
 {
     private val JSON_NULL = JSONObject.NULL

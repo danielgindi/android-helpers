@@ -2,6 +2,7 @@ package com.dg.animations
 
 import android.view.View
 
+@Suppress("unused")
 class ResizeWidthAnimation : ResizeAnimation
 {
     /**

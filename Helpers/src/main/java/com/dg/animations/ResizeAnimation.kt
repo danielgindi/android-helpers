@@ -4,6 +4,7 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.Transformation
 
+@Suppress("unused")
 open class ResizeAnimation : Animation
 {
 

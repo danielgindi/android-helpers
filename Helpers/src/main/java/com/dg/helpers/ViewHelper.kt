@@ -2,6 +2,7 @@ package com.dg.helpers
 
 import android.view.View
 
+@Suppress("unused")
 object ViewHelper
 {
     /**

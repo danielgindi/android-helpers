@@ -1,5 +1,6 @@
 package com.dg.helpers
 
+@Suppress("unused")
 object IntHelper
 {
     fun withObject(value: Any?): Int?

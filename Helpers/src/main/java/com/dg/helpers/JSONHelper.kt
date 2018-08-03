@@ -7,6 +7,7 @@ import org.json.JSONObject
 import java.util.ArrayList
 import java.util.HashMap
 
+@Suppress("unused")
 object JSONHelper
 {
     fun toStringArray(json: JSONArray?): Array<String?>?

@@ -31,6 +31,7 @@ import java.util.concurrent.atomic.AtomicInteger
 /**
  * Utilities for handling Executors
  */
+@Suppress("unused")
 object ExecutorHelper
 {
     val CPU_COUNT = Runtime.getRuntime().availableProcessors()

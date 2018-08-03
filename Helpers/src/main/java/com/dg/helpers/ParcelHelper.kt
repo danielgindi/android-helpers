@@ -4,6 +4,7 @@ import android.os.Parcel
 
 import java.util.Date
 
+@Suppress("unused")
 object ParcelHelper
 {
     fun writeString(parcel: Parcel, value: String?)

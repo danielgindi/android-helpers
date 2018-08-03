@@ -1,5 +1,6 @@
 package com.dg.helpers
 
+@Suppress("unused")
 object CollectionHelper
 {
     fun isEmpty(array: Collection<*>?): Boolean

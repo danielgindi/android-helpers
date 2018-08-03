@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.ListView
 
+@Suppress("unused")
 class BouncyListView : ListView
 {
     private var maxYOverscrollDistance: Int = 0

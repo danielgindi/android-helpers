@@ -8,10 +8,13 @@ import android.text.style.MetricAffectingSpan
 /**
  * Changes the typeface family of the text to which the span is attached.
  */
+@Suppress("unused")
 class CustomTypefaceSpannable : MetricAffectingSpan
 {
+    @Suppress("MemberVisibilityCanBePrivate")
     val typeface: Typeface
 
+    @Suppress("ConvertSecondaryConstructorToPrimary")
     constructor(typeface: Typeface) : super()
     {
         this.typeface = typeface

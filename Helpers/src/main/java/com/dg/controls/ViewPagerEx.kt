@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import com.dg.R
 
+@Suppress("unused")
 class ViewPagerEx : android.support.v4.view.ViewPager
 {
     @Suppress("MemberVisibilityCanBePrivate")

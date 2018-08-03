@@ -1,5 +1,6 @@
 package com.dg.helpers
 
+@Suppress("unused")
 object DoubleHelper
 {
     fun withObject(value: Any?): Double?

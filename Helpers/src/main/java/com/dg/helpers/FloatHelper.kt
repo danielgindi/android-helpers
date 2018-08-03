@@ -1,5 +1,6 @@
 package com.dg.helpers
 
+@Suppress("unused")
 object FloatHelper
 {
     fun withObject(value: Any?): Float?

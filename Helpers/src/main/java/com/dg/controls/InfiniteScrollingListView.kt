@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.ProgressBar
 
+@Suppress("unused")
 class InfiniteScrollingListView : ListView
 {
     private var mIsLoadingMore: Boolean = false

@@ -1,5 +1,6 @@
 package com.dg.helpers
 
+@Suppress("unused")
 object BooleanHelper
 {
     fun withObject(value: Any?): Boolean?
