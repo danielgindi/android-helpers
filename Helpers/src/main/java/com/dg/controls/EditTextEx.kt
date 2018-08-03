@@ -5,13 +5,10 @@ import android.content.res.TypedArray
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.util.AttributeSet
-
 import com.dg.R
 import com.dg.helpers.FontHelper
 
-import java.util.Locale
-
-class EditTextEx : android.widget.EditText
+class EditTextEx : android.support.v7.widget.AppCompatEditText
 {
     constructor(context: Context) : super(context)
 

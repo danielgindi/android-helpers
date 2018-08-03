@@ -5,13 +5,10 @@ import android.content.res.TypedArray
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.util.AttributeSet
-
 import com.dg.R
 import com.dg.helpers.FontHelper
 
-import java.util.Locale
-
-class TextViewEx : android.widget.TextView
+class TextViewEx : android.support.v7.widget.AppCompatTextView
 {
     constructor(context: Context) : super(context)
 

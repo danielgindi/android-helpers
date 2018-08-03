@@ -1,14 +1,11 @@
 package com.dg.controls
 
 import android.content.Context
-import android.content.res.TypedArray
-import android.support.v4.view.ViewPager
 import android.util.AttributeSet
 import android.view.MotionEvent
-
 import com.dg.R
 
-class ViewPagerEx : ViewPager
+class ViewPagerEx : android.support.v4.view.ViewPager
 {
     @Suppress("MemberVisibilityCanBePrivate")
     internal var mSwipeEnabled = true

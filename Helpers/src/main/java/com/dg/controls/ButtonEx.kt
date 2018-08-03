@@ -5,13 +5,10 @@ import android.content.res.TypedArray
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.util.AttributeSet
-
 import com.dg.R
 import com.dg.helpers.FontHelper
 
-import java.util.Locale
-
-class ButtonEx : android.widget.Button
+class ButtonEx : android.support.v7.widget.AppCompatButton
 {
     constructor(context: Context) : super(context)
 
