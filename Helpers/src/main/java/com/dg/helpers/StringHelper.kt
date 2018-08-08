@@ -32,26 +32,24 @@ object StringHelper
             is String -> return value
             is Double ->
             {
-                val d = (value as Double?)!!
-                return if (d.toLong().toDouble() == value as Double?)
+                return if (value.toLong().toDouble() == value)
                 {
-                    d.toLong().toString()
+                    value.toLong().toString()
                 }
                 else
                 {
-                    cleanDecimalFormatter.format(d)
+                    cleanDecimalFormatter.format(value)
                 }
             }
             is Float ->
             {
-                val d = (value as Float?)!!
-                return if (d.toLong().toFloat() == value as Float?)
+                return if (value.toLong().toFloat() == value)
                 {
-                    d.toLong().toString()
+                    value.toLong().toString()
                 }
                 else
                 {
-                    cleanDecimalFormatter.format(d.toDouble())
+                    cleanDecimalFormatter.format(value.toDouble())
                 }
             }
             else -> return value.toString()

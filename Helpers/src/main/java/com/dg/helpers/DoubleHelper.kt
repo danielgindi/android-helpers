@@ -14,7 +14,7 @@ object DoubleHelper
             is Short -> return value.toDouble()
             is String -> try
             {
-                return java.lang.Double.parseDouble(value as String?)
+                return java.lang.Double.parseDouble(value)
             }
             catch (ignored: Exception)
             {

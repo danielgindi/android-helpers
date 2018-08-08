@@ -9,11 +9,11 @@ object LongHelper
         {
             null -> return null
             is Long -> return value
-            is Int -> return value as Long
-            is Short -> return value as Long
+            is Int -> return value.toLong()
+            is Short -> return value.toLong()
             is String -> try
             {
-                return java.lang.Long.parseLong(value as String?)
+                return java.lang.Long.parseLong(value)
             }
             catch (ignored: Exception)
             {
