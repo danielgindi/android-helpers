@@ -160,7 +160,7 @@ object JSONHelper
 
                 for ((key1, value) in o)
                 {
-                    val key = key1 as? String ?: continue
+                    val key = key1 as? String ?: key1.toString()
 
                     try
                     {
