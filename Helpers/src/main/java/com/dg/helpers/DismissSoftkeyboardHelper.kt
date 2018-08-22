@@ -41,7 +41,7 @@ object DismissSoftkeyboardHelper
             return
         }
 
-        view.setOnTouchListener { v, event ->
+        view.setOnTouchListener { _, _ ->
             hideSoftKeyboard(context)
             false
         }

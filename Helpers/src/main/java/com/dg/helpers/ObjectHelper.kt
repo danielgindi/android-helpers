@@ -18,8 +18,11 @@ object ObjectHelper
      */
     fun equals(left: Any?, right: Any?): Boolean
     {
+        @Suppress("NAME_SHADOWING")
         var left = left
+        @Suppress("NAME_SHADOWING")
         var right = right
+
         if (left === JSON_NULL)
         {
             left = null

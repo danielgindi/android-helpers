@@ -47,7 +47,7 @@ class EditTextEx : android.support.v7.widget.AppCompatEditText
         if (fontFamily != null && !fontFamily.isEmpty())
         {
             paintFlags = this.paintFlags or Paint.SUBPIXEL_TEXT_FLAG or Paint.LINEAR_TEXT_FLAG
-            setCustomFont(context, fontFamily)
+            setCustomFont(fontFamily)
         }
     }
 

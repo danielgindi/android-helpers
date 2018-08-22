@@ -42,8 +42,11 @@ object BitmapHelper
                                   keepAspectRatio: Boolean,
                                   freeOldBitmap: Boolean): Bitmap
     {
+        @Suppress("NAME_SHADOWING")
         var maxWidth = maxWidth
+        @Suppress("NAME_SHADOWING")
         var maxHeight = maxHeight
+
         if (keepAspectRatio)
         {
             val ratio = if (bmp.width == 0) 1f else bmp.width / bmp.height.toFloat()
