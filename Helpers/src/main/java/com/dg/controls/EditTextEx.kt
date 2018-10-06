@@ -5,11 +5,12 @@ import android.content.res.TypedArray
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.util.AttributeSet
+import androidx.appcompat.widget.AppCompatEditText
 import com.dg.R
 import com.dg.helpers.FontHelper
 
 @Suppress("unused")
-class EditTextEx : android.support.v7.widget.AppCompatEditText
+class EditTextEx : AppCompatEditText
 {
     constructor(context: Context) : super(context)
 

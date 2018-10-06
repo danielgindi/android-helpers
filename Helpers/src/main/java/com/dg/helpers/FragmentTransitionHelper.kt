@@ -1,18 +1,16 @@
 package com.dg.helpers
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
-import android.view.animation.Interpolator
 import android.view.animation.ScaleAnimation
 
 import java.lang.reflect.InvocationTargetException
-import java.lang.reflect.Method
 
 /**
  * Code here was taken from Android's open source.

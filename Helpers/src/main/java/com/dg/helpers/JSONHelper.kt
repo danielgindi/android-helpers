@@ -189,7 +189,7 @@ object JSONHelper
                 return o
             }
 
-            if (o.javaClass.getPackage().name.startsWith("java."))
+            if (o.javaClass.getPackage()?.name?.startsWith("java.") == true)
             {
                 return o.toString()
             }

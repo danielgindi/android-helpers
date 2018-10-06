@@ -22,7 +22,7 @@ object DismissSoftkeyboardHelper
     {
         if (view == null) return
 
-        val viewPackageName = view.javaClass.getPackage().name
+        val viewPackageName = view.javaClass.getPackage()?.name
         val viewClassName = view.javaClass.simpleName
 
         if (view is EditText ||
@@ -31,7 +31,7 @@ object DismissSoftkeyboardHelper
                 view is Checkable ||
                 view is DatePicker ||
                 view is AdapterView<*> ||
-                Build.VERSION.SDK_INT >= 11 && view is android.widget.NumberPicker ||
+                view is android.widget.NumberPicker ||
                 view is android.widget.RadioGroup ||
                 view is android.widget.TimePicker ||
                 Build.VERSION.SDK_INT >= 21 && view is android.widget.Toolbar ||

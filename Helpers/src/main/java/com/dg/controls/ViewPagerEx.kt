@@ -3,10 +3,11 @@ package com.dg.controls
 import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
+import androidx.viewpager.widget.ViewPager
 import com.dg.R
 
 @Suppress("unused")
-class ViewPagerEx : android.support.v4.view.ViewPager
+class ViewPagerEx : ViewPager
 {
     @Suppress("MemberVisibilityCanBePrivate")
     internal var mSwipeEnabled = true

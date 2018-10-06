@@ -5,11 +5,12 @@ import android.content.res.TypedArray
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.util.AttributeSet
+import androidx.appcompat.widget.AppCompatButton
 import com.dg.R
 import com.dg.helpers.FontHelper
 
 @Suppress("unused")
-class ButtonEx : android.support.v7.widget.AppCompatButton
+class ButtonEx : AppCompatButton
 {
     constructor(context: Context) : super(context)
 

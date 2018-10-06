@@ -25,7 +25,7 @@ object DateHelper
                 format.timeZone = utcTimezone
                 mIso8601.set(format)
             }
-            return mIso8601.get()
+            return mIso8601.get()!!
         }
 
     val iso8601_sss: SimpleDateFormat
@@ -38,7 +38,7 @@ object DateHelper
                 format.timeZone = utcTimezone
                 mIso8601_sss.set(format)
             }
-            return mIso8601_sss.get()
+            return mIso8601_sss.get()!!
         }
 
     // Backwards compatibility
