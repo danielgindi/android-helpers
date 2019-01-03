@@ -9,7 +9,7 @@ import java.util.HashMap
 /**
  * This loads the specified font from the assets folder.
  * If the path specified does not contain path and extension
- * - it will search for assets/fonts/[fontname].[ttf|otf]
+ * - it will search for assets/fonts/<fontname>.[ttf|otf]
  */
 @Suppress("unused")
 class FontHelper private constructor()
