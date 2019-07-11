@@ -15,6 +15,7 @@ object DateHelper
     private val mIso8601 = ThreadLocal<SimpleDateFormat>()
     private val mIso8601_sss = ThreadLocal<SimpleDateFormat>()
 
+    @Suppress("MemberVisibilityCanBePrivate")
     val iso8601: SimpleDateFormat
         get()
         {
@@ -28,6 +29,7 @@ object DateHelper
             return mIso8601.get()!!
         }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     val iso8601_sss: SimpleDateFormat
         get()
         {

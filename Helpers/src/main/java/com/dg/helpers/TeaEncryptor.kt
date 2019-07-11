@@ -6,6 +6,7 @@ import java.util.ArrayList
 
 import android.util.Base64
 import android.util.Log
+import kotlin.math.ceil
 
 @Suppress("unused")
 object TeaEncryptor
@@ -13,7 +14,7 @@ object TeaEncryptor
     private fun bytesToLongs(s: ByteArray): MutableList<Int>
     {
         val slen = s.size
-        val len = Math.ceil(slen / 4.0).toInt()
+        val len = ceil(slen / 4.0).toInt()
         val l = ArrayList<Int>(len)
         var ll: Int
         var lll: Int
@@ -123,7 +124,7 @@ object TeaEncryptor
         }
         catch (ex: UnsupportedEncodingException)
         {
-            Log.i("HREQ", "Exception: " + ex.toString())
+            Log.i("HREQ", "Exception: $ex")
             return ""
         }
 

@@ -3,6 +3,7 @@ package com.dg.helpers
 @Suppress("unused")
 object DoubleHelper
 {
+    @Suppress("MemberVisibilityCanBePrivate")
     fun withObject(value: Any?): Double?
     {
         when (value)
@@ -23,6 +24,7 @@ object DoubleHelper
         return null
     }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     fun withObject(value: Any?, defaultValue: Double): Double
     {
         return withObject(value) ?: defaultValue

@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 @Suppress("unused")
 object RuntimePermissionHelper
 {
+    @Suppress("MemberVisibilityCanBePrivate")
     fun isPermissionAvailable(context: Context, permission: String): Boolean
     {
         return ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED

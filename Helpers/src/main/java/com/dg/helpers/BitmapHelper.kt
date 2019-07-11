@@ -22,11 +22,11 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.graphics.Point
-import android.media.ExifInterface
 import android.os.Build
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Surface
+import androidx.exifinterface.media.ExifInterface
 
 import java.io.IOException
 import java.io.OutputStream
@@ -72,6 +72,7 @@ object BitmapHelper
         return scaled
     }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     fun calculateInSampleSize(options: BitmapFactory.Options, minWidth: Int, minHeight: Int): Int
     {
         // Raw height and width of image
@@ -80,7 +81,7 @@ object BitmapHelper
 
         var inSampleSize = 1
 
-        if (minHeight in 1..(height - 1) || minWidth in 1..(width - 1))
+        if (minHeight in 1 until height || minWidth in 1 until width)
         {
             val halfHeight = height / 2
             val halfWidth = width / 2
@@ -109,7 +110,7 @@ object BitmapHelper
             val options = BitmapFactory.Options()
             options.inJustDecodeBounds = true
             BitmapFactory.decodeFile(filePath, options)
-            options.inSampleSize = BitmapHelper.calculateInSampleSize(options, sizeConstraint.x, sizeConstraint.y)
+            options.inSampleSize = calculateInSampleSize(options, sizeConstraint.x, sizeConstraint.y)
             options.inJustDecodeBounds = false
             image = BitmapFactory.decodeFile(filePath, options)
 
@@ -178,35 +179,23 @@ object BitmapHelper
 
             var angle = 0
 
-            if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90)
+            when (exifOrientation)
             {
-                angle += 90
-            }
-            else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_180)
-            {
-                angle += 180
-            }
-            else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_270)
-            {
-                angle += 270
-            }
-            else if (exifOrientation == ExifInterface.ORIENTATION_FLIP_HORIZONTAL)
-            {
-                flippedHorizontally = true
-            }
-            else if (exifOrientation == ExifInterface.ORIENTATION_FLIP_VERTICAL)
-            {
-                flippedVertically = true
-            }
-            else if (exifOrientation == ExifInterface.ORIENTATION_TRANSPOSE)
-            {
-                angle += 90
-                flippedVertically = true
-            }
-            else if (exifOrientation == ExifInterface.ORIENTATION_TRANSVERSE)
-            {
-                angle -= 90
-                flippedVertically = true
+                ExifInterface.ORIENTATION_ROTATE_90 -> angle += 90
+                ExifInterface.ORIENTATION_ROTATE_180 -> angle += 180
+                ExifInterface.ORIENTATION_ROTATE_270 -> angle += 270
+                ExifInterface.ORIENTATION_FLIP_HORIZONTAL -> flippedHorizontally = true
+                ExifInterface.ORIENTATION_FLIP_VERTICAL -> flippedVertically = true
+                ExifInterface.ORIENTATION_TRANSPOSE ->
+                {
+                    angle += 90
+                    flippedVertically = true
+                }
+                ExifInterface.ORIENTATION_TRANSVERSE ->
+                {
+                    angle -= 90
+                    flippedVertically = true
+                }
             }
 
             var orientation: Int
@@ -214,17 +203,11 @@ object BitmapHelper
             if (activityForScreenOrientation != null)
             {
                 orientation = getScreenOrientation(activityForScreenOrientation)
-                if (orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+                when (orientation)
                 {
-                    angle += 90
-                }
-                else if (orientation == ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE)
-                {
-                    angle += 180
-                }
-                else if (orientation == ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT)
-                {
-                    angle += 270
+                    ActivityInfo.SCREEN_ORIENTATION_PORTRAIT -> angle += 90
+                    ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE -> angle += 180
+                    ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT -> angle += 270
                 }
             }
 
@@ -282,6 +265,7 @@ object BitmapHelper
 
     }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     fun getBitmapByFixingRotationForFile(filePath: String,
                                          sourceBitmap: Bitmap?,
                                          activityForScreenOrientation: Activity?,
@@ -300,51 +284,33 @@ object BitmapHelper
 
             var angle = 0
 
-            if (orientation == ExifInterface.ORIENTATION_ROTATE_90)
+            when (orientation)
             {
-                angle += 90
-            }
-            else if (orientation == ExifInterface.ORIENTATION_ROTATE_180)
-            {
-                angle += 180
-            }
-            else if (orientation == ExifInterface.ORIENTATION_ROTATE_270)
-            {
-                angle += 270
-            }
-            else if (orientation == ExifInterface.ORIENTATION_FLIP_HORIZONTAL)
-            {
-                flippedHorizontally = true
-            }
-            else if (orientation == ExifInterface.ORIENTATION_FLIP_VERTICAL)
-            {
-                flippedVertically = true
-            }
-            else if (orientation == ExifInterface.ORIENTATION_TRANSPOSE)
-            {
-                angle += 90
-                flippedVertically = true
-            }
-            else if (orientation == ExifInterface.ORIENTATION_TRANSVERSE)
-            {
-                angle -= 90
-                flippedVertically = true
+                ExifInterface.ORIENTATION_ROTATE_90 -> angle += 90
+                ExifInterface.ORIENTATION_ROTATE_180 -> angle += 180
+                ExifInterface.ORIENTATION_ROTATE_270 -> angle += 270
+                ExifInterface.ORIENTATION_FLIP_HORIZONTAL -> flippedHorizontally = true
+                ExifInterface.ORIENTATION_FLIP_VERTICAL -> flippedVertically = true
+                ExifInterface.ORIENTATION_TRANSPOSE ->
+                {
+                    angle += 90
+                    flippedVertically = true
+                }
+                ExifInterface.ORIENTATION_TRANSVERSE ->
+                {
+                    angle -= 90
+                    flippedVertically = true
+                }
             }
 
             if (activityForScreenOrientation != null)
             {
                 orientation = getScreenOrientation(activityForScreenOrientation)
-                if (orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+                when (orientation)
                 {
-                    angle += 90
-                }
-                else if (orientation == ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE)
-                {
-                    angle += 180
-                }
-                else if (orientation == ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT)
-                {
-                    angle += 270
+                    ActivityInfo.SCREEN_ORIENTATION_PORTRAIT -> angle += 90
+                    ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE -> angle += 180
+                    ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT -> angle += 270
                 }
             }
 
@@ -390,6 +356,7 @@ object BitmapHelper
         return null
     }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     fun getScreenOrientation(activity: Activity): Int
     {
         val rotation = activity.windowManager.defaultDisplay.rotation

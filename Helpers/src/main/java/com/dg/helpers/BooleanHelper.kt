@@ -3,6 +3,7 @@ package com.dg.helpers
 @Suppress("unused")
 object BooleanHelper
 {
+    @Suppress("MemberVisibilityCanBePrivate")
     fun withObject(value: Any?): Boolean?
     {
         return if (value == null)

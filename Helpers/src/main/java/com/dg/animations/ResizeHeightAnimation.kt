@@ -16,5 +16,5 @@ class ResizeHeightAnimation : ResizeAnimation
     @Suppress("ConvertSecondaryConstructorToPrimary")
     constructor(view: View,
                 fromHeight: Int,
-                toHeight: Int) : super(view, ResizeAnimation.CURRENT_SIZE, ResizeAnimation.CURRENT_SIZE, fromHeight, toHeight)
+                toHeight: Int) : super(view, CURRENT_SIZE, CURRENT_SIZE, fromHeight, toHeight)
 }

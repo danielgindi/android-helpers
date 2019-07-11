@@ -12,12 +12,13 @@ class SchedulerHandler : Handler
 
     constructor() : super()
 
-    constructor(callback: Handler.Callback) : super(callback)
+    constructor(callback: Callback) : super(callback)
 
     constructor(looper: Looper) : super(looper)
 
-    constructor(looper: Looper, callback: Handler.Callback) : super(looper, callback)
+    constructor(looper: Looper, callback: Callback) : super(looper, callback)
 
+    @Suppress("MemberVisibilityCanBePrivate")
     fun postWithSchedule(task: Runnable, delay: Long, period: Long)
     {
         val runnable = object : Runnable

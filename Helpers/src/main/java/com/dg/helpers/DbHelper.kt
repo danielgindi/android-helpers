@@ -1,14 +1,10 @@
 package com.dg.helpers
 
 import android.content.ContentValues
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
-import java.util.TimeZone
+import java.util.*
 
 @Suppress("unused")
 object DbHelper
@@ -18,6 +14,7 @@ object DbHelper
         return DateHelper.utcIsoDateFormatter()
     }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     fun getDateForDbFromDate(date: Date?, escape: Boolean): String?
     {
         return if (date != null)
@@ -158,42 +155,17 @@ object DbHelper
 
         for (key in values.keys)
         {
-            val value = values[key]
-            if (value == null)
+            when (val value = values[key])
             {
-                content.putNull(key)
-            }
-            else if (value is Int)
-            {
-                content.put(key, value)
-            }
-            else if (value is Short)
-            {
-                content.put(key, value)
-            }
-            else if (value is Long)
-            {
-                content.put(key, value)
-            }
-            else if (value is Float)
-            {
-                content.put(key, value)
-            }
-            else if (value is Double)
-            {
-                content.put(key, value)
-            }
-            else if (value is Boolean)
-            {
-                content.put(key, value)
-            }
-            else if (value is String)
-            {
-                content.put(key, value)
-            }
-            else if (value is Date)
-            {
-                content.put(key, getDateForDbFromDate(value, false))
+                null -> content.putNull(key)
+                is Int -> content.put(key, value)
+                is Short -> content.put(key, value)
+                is Long -> content.put(key, value)
+                is Float -> content.put(key, value)
+                is Double -> content.put(key, value)
+                is Boolean -> content.put(key, value)
+                is String -> content.put(key, value)
+                is Date -> content.put(key, getDateForDbFromDate(value, false))
             }
         }
 

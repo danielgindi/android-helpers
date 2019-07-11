@@ -8,7 +8,6 @@ import java.util.regex.Pattern
 @Suppress("unused")
 object StringHelper
 {
-
     private var sCleanDecimalFormatter: DecimalFormat? = null
 
     private val cleanDecimalFormatter: DecimalFormat
@@ -23,7 +22,7 @@ object StringHelper
             return sCleanDecimalFormatter as DecimalFormat
         }
 
-    private val pattern = Pattern.compile("^[a-zA-Z0-9\\._%+\\-]+@[a-zA-Z0-9\\-]+(\\.[a-zA-Z0-9\\-]+)*$")
+    @Suppress("MemberVisibilityCanBePrivate")
     fun withObject(value: Any?): String?
     {
         when (value)
@@ -61,8 +60,10 @@ object StringHelper
         return withObject(value) ?: defaultValue
     }
 
+    private val mEmailPattern = Pattern.compile("^[a-zA-Z0-9\\._%+\\-]+@[a-zA-Z0-9\\-]+(\\.[a-zA-Z0-9\\-]+)*$")
+
     fun isValidEmailAddress(email: String): Boolean
     {
-        return pattern.matcher(email).matches()
+        return mEmailPattern.matcher(email).matches()
     }
 }

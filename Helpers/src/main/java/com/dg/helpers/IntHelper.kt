@@ -3,6 +3,7 @@ package com.dg.helpers
 @Suppress("unused")
 object IntHelper
 {
+    @Suppress("MemberVisibilityCanBePrivate")
     fun withObject(value: Any?): Int?
     {
         when (value)

@@ -18,7 +18,7 @@ import java.lang.reflect.InvocationTargetException
  * in case you had to override the default implementation for some reason.
  * (Android's default implementation is private access, so this gives public access).
  */
-@Suppress("unused")
+@Suppress("unused", "MemberVisibilityCanBePrivate")
 object FragmentTransitionHelper
 {
     const val ANIM_STYLE_OPEN_ENTER = 1
@@ -31,7 +31,7 @@ object FragmentTransitionHelper
     private val DECELERATE_QUINT = DecelerateInterpolator(2.5f)
     private val DECELERATE_CUBIC = DecelerateInterpolator(1.5f)
 
-    private val ANIM_DUR = 220
+    private const val ANIM_DUR = 220
 
     fun transitToStyleIndex(transit: Int, enter: Boolean): Int
     {

@@ -6,6 +6,7 @@ import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
 import java.nio.channels.FileChannel
+import kotlin.math.max
 
 /**
  * Utilities for handling Files
@@ -178,7 +179,7 @@ object FileHelper
     fun getExtension(filePath: String): String
     {
         val i = filePath.lastIndexOf('.')
-        val p = Math.max(filePath.lastIndexOf('/'), filePath.lastIndexOf('\\'))
+        val p = max(filePath.lastIndexOf('/'), filePath.lastIndexOf('\\'))
 
         return if (i > p)
         {

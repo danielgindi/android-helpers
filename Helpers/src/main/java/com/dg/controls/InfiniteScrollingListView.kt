@@ -56,7 +56,7 @@ class InfiniteScrollingListView : ListView
             mProgressBar!!.setPadding(6, 6, 6, 6)
 
             mInfiniteScrollFooter = LinearLayout(context)
-            val layoutParams = AbsListView.LayoutParams(
+            val layoutParams = LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT)
             mInfiniteScrollFooter!!.gravity = Gravity.CENTER
@@ -68,7 +68,7 @@ class InfiniteScrollingListView : ListView
             addFooterView(mInfiniteScrollFooter)
         }
 
-        setOnScrollListener(object : AbsListView.OnScrollListener
+        setOnScrollListener(object : OnScrollListener
         {
             override fun onScrollStateChanged(view: AbsListView, scrollState: Int)
             {

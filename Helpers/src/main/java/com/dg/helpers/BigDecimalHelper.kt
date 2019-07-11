@@ -5,6 +5,7 @@ import java.math.BigDecimal
 @Suppress("unused")
 object BigDecimalHelper
 {
+    @Suppress("MemberVisibilityCanBePrivate")
     fun withObject(value: Any?): BigDecimal?
     {
         return if (value == null)

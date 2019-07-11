@@ -3,21 +3,15 @@ package com.dg.helpers
 import android.app.Activity
 import android.content.Context
 import android.os.Build
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.AdapterView
-import android.widget.Button
-import android.widget.Checkable
-import android.widget.DatePicker
-import android.widget.EditText
-import android.widget.ImageButton
+import android.widget.*
 
 @Suppress("unused")
 object DismissSoftkeyboardHelper
 {
-
+    @Suppress("MemberVisibilityCanBePrivate")
     fun setupUI(context: Context, view: View?)
     {
         if (view == null) return
@@ -31,10 +25,10 @@ object DismissSoftkeyboardHelper
                 view is Checkable ||
                 view is DatePicker ||
                 view is AdapterView<*> ||
-                view is android.widget.NumberPicker ||
-                view is android.widget.RadioGroup ||
-                view is android.widget.TimePicker ||
-                Build.VERSION.SDK_INT >= 21 && view is android.widget.Toolbar ||
+                view is NumberPicker ||
+                view is RadioGroup ||
+                view is TimePicker ||
+                Build.VERSION.SDK_INT >= 21 && view is Toolbar ||
                 viewPackageName == "android.widget" && viewClassName == "Toolbar" ||
                 viewClassName == "TextInputLayout")
         {
@@ -56,6 +50,7 @@ object DismissSoftkeyboardHelper
         }
     }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     fun hideSoftKeyboard(context: Context)
     {
         try

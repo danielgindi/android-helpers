@@ -33,7 +33,7 @@ object ConnectivityHelper
      */
     fun isConnected(context: Context): Boolean
     {
-        val info = ConnectivityHelper.getNetworkInfo(context)
+        val info = getNetworkInfo(context)
         return info != null && info.isConnected
     }
 
@@ -44,7 +44,7 @@ object ConnectivityHelper
      */
     fun isConnectedWifi(context: Context): Boolean
     {
-        val info = ConnectivityHelper.getNetworkInfo(context)
+        val info = getNetworkInfo(context)
         return info != null && info.isConnected && info.type == ConnectivityManager.TYPE_WIFI
     }
 
@@ -55,7 +55,7 @@ object ConnectivityHelper
      */
     fun isConnectedMobile(context: Context): Boolean
     {
-        val info = ConnectivityHelper.getNetworkInfo(context)
+        val info = getNetworkInfo(context)
         return info != null && info.isConnected && info.type == ConnectivityManager.TYPE_MOBILE
     }
 
@@ -66,9 +66,9 @@ object ConnectivityHelper
      */
     fun isConnectedFast(context: Context): Boolean
     {
-        val info = ConnectivityHelper.getNetworkInfo(context)
+        val info = getNetworkInfo(context)
         val tm = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        return info != null && info.isConnected && ConnectivityHelper.isConnectionFast(info.type, tm.networkType)
+        return info != null && info.isConnected && isConnectionFast(info.type, tm.networkType)
     }
 
     /**
@@ -79,13 +79,10 @@ object ConnectivityHelper
      */
     fun isConnectionFast(type: Int, subType: Int): Boolean
     {
-        return if (type == ConnectivityManager.TYPE_WIFI)
+        return when (type)
         {
-            true
-        }
-        else if (type == ConnectivityManager.TYPE_MOBILE)
-        {
-            when (subType)
+            ConnectivityManager.TYPE_WIFI -> true
+            ConnectivityManager.TYPE_MOBILE -> when (subType)
             {
                 TelephonyManager.NETWORK_TYPE_1xRTT -> false // ~ 50-100 kbps
                 TelephonyManager.NETWORK_TYPE_CDMA -> false // ~ 14-64 kbps
@@ -116,10 +113,7 @@ object ConnectivityHelper
                 TelephonyManager.NETWORK_TYPE_UNKNOWN -> false
                 else -> false
             }
-        }
-        else
-        {
-            false
+            else -> false
         }
     }
 }

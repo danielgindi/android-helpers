@@ -3,6 +3,7 @@ package com.dg.helpers
 @Suppress("unused")
 object LongHelper
 {
+    @Suppress("MemberVisibilityCanBePrivate")
     fun withObject(value: Any?): Long?
     {
         when (value)

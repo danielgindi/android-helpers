@@ -18,6 +18,6 @@ class PopupWindowResizeWidthAnimation : PopupWindowResizeAnimation
                 fromWidth: Int,
                 toWidth: Int)
             : super(popupWindow,
-            PopupWindowResizeAnimation.CURRENT_SIZE, PopupWindowResizeAnimation.CURRENT_SIZE,
+            CURRENT_SIZE, CURRENT_SIZE,
             fromWidth, toWidth)
 }

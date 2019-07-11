@@ -1,5 +1,10 @@
 package com.dg.helpers
 
+import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.math.sqrt
+
 @Suppress("unused")
 object LocationHelper
 {
@@ -31,9 +36,9 @@ object LocationHelper
         val latDelta = lat2 - lat1
         val longitudeDelta = lon2 - lon1
 
-        val a = Math.sin(latDelta / 2.0) * Math.sin(latDelta / 2.0) + Math.cos(lat1) * Math.cos(lat2) *
-                Math.sin(longitudeDelta / 2.0) * Math.sin(longitudeDelta / 2.0)
-        val c = 2.0 * Math.atan2(Math.sqrt(a), Math.sqrt(1.0 - a))
+        val a = sin(latDelta / 2.0) * sin(latDelta / 2.0) + cos(lat1) * cos(lat2) *
+                sin(longitudeDelta / 2.0) * sin(longitudeDelta / 2.0)
+        val c = 2.0 * atan2(sqrt(a), sqrt(1.0 - a))
         return R * c // Kilometers
     }
 }

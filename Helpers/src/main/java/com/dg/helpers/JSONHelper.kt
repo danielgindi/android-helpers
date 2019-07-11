@@ -73,7 +73,7 @@ object JSONHelper
             }
         }
 
-        return toArray<T>(array)
+        return toArray(array)
     }
 
     fun toMap(json: JSONObject?): Map<String, Any?>?
@@ -113,6 +113,7 @@ object JSONHelper
      * Otherwise if the object is from a `java` package, returns the result of `toString`.
      * If wrapping fails, returns null.
      */
+    @Suppress("MemberVisibilityCanBePrivate")
     fun wrap(o: Any?): Any?
     {
         if (o == null)

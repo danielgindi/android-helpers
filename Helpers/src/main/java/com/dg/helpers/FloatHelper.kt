@@ -3,6 +3,7 @@ package com.dg.helpers
 @Suppress("unused")
 object FloatHelper
 {
+    @Suppress("MemberVisibilityCanBePrivate")
     fun withObject(value: Any?): Float?
     {
         when (value)
