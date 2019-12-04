@@ -20,8 +20,8 @@ object DateHelper
             {
                 val utcTimezone = TimeZone.getTimeZone("GMT")
                 val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
-                format.timeZone = utcTimezone
                 format.calendar = GregorianCalendar.getInstance()
+                format.timeZone = utcTimezone
                 mIso8601.set(format)
             }
             return mIso8601.get()!!
@@ -35,8 +35,8 @@ object DateHelper
             {
                 val utcTimezone = TimeZone.getTimeZone("GMT")
                 val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
-                format.timeZone = utcTimezone
                 format.calendar = GregorianCalendar.getInstance()
+                format.timeZone = utcTimezone
                 mIso8601_sss.set(format)
             }
             return mIso8601_sss.get()!!
