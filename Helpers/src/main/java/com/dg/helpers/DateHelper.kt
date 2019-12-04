@@ -4,10 +4,7 @@ import android.text.format.DateUtils
 
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Date
-import java.util.Locale
-import java.util.TimeZone
+import java.util.*
 
 @Suppress("unused")
 object DateHelper
@@ -24,6 +21,7 @@ object DateHelper
                 val utcTimezone = TimeZone.getTimeZone("GMT")
                 val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
                 format.timeZone = utcTimezone
+                format.calendar = GregorianCalendar.getInstance()
                 mIso8601.set(format)
             }
             return mIso8601.get()!!
@@ -38,6 +36,7 @@ object DateHelper
                 val utcTimezone = TimeZone.getTimeZone("GMT")
                 val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
                 format.timeZone = utcTimezone
+                format.calendar = GregorianCalendar.getInstance()
                 mIso8601_sss.set(format)
             }
             return mIso8601_sss.get()!!
