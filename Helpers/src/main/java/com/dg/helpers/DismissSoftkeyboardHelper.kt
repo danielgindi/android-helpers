@@ -12,7 +12,7 @@ import android.widget.*
 object DismissSoftkeyboardHelper
 {
     @Suppress("MemberVisibilityCanBePrivate")
-    fun setupUI(context: Context, view: View?)
+    fun setupUI(context: Context, view: View?, deep: Boolean = false)
     {
         if (view == null) return
 
@@ -40,12 +40,15 @@ object DismissSoftkeyboardHelper
             false
         }
 
-        if (view is ViewGroup)
+        if (deep)
         {
-            for (i in 0 until view.childCount)
+            if (view is ViewGroup)
             {
-                val innerView = view.getChildAt(i)
-                setupUI(context, innerView)
+                for (i in 0 until view.childCount)
+                {
+                    val innerView = view.getChildAt(i)
+                    setupUI(context, innerView)
+                }
             }
         }
     }
