@@ -59,7 +59,13 @@ object DismissSoftkeyboardHelper
         try
         {
             val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow((context as Activity).currentFocus!!.windowToken, 0)
+            val currentFocus = (context as Activity).currentFocus
+            if (currentFocus != null)
+            {
+                inputMethodManager.hideSoftInputFromWindow(
+                        currentFocus.windowToken,
+                        InputMethodManager.HIDE_NOT_ALWAYS)
+            }
         }
         catch (ex: Exception)
         {
