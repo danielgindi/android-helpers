@@ -12,6 +12,9 @@
     <declare-styleable name="RadioButtonEx">
         <attr name="customFontFamily" format="string"/>
     </declare-styleable>
+    <declare-styleable name="TextInputEditTextEx">
+        <attr name="customFontFamily" format="string"/>
+    </declare-styleable>
     <declare-styleable name="TextInputLayoutEx">
         <attr name="customFontFamily" format="string"/>
     </declare-styleable>
