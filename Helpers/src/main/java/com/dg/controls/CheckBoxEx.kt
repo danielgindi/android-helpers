@@ -37,8 +37,8 @@ class CheckBoxEx : AppCompatCheckBox
         var styledAttributes: TypedArray? = null
         try
         {
-            styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.CustomFontFamily)
-            fontFamily = styledAttributes!!.getString(R.styleable.CustomFontFamily_customFontFamily)
+            styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.CheckBoxEx)
+            fontFamily = styledAttributes!!.getString(R.styleable.CheckBoxEx_customFontFamily)
         }
         finally
         {

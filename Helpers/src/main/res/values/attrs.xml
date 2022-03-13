@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CustomFontFamily">
+    <declare-styleable name="ButtonEx">
         <attr name="customFontFamily" format="string"/>
     </declare-styleable>
-    <declare-styleable name="ViewPager">
+    <declare-styleable name="CheckBoxEx">
+        <attr name="customFontFamily" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="EditTextEx">
+        <attr name="customFontFamily" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="RadioButtonEx">
+        <attr name="customFontFamily" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="TextInputLayoutEx">
+        <attr name="customFontFamily" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="TextViewEx">
+        <attr name="customFontFamily" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="ViewPagerEx">
         <attr name="swipeEnabled" format="boolean"/>
     </declare-styleable>
 </resources>

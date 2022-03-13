@@ -17,10 +17,10 @@ class ViewPagerEx : ViewPager
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
     {
 
-        val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.ViewPager)
+        val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.ViewPagerEx)
         try
         {
-            mSwipeEnabled = styledAttributes.getBoolean(R.styleable.ViewPager_swipeEnabled, true)
+            mSwipeEnabled = styledAttributes.getBoolean(R.styleable.ViewPagerEx_swipeEnabled, true)
         }
         finally
         {

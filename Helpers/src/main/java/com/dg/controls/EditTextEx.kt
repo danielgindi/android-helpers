@@ -37,8 +37,8 @@ class EditTextEx : AppCompatEditText
         var styledAttributes: TypedArray? = null
         try
         {
-            styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.CustomFontFamily)
-            fontFamily = styledAttributes!!.getString(R.styleable.CustomFontFamily_customFontFamily)
+            styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.EditTextEx)
+            fontFamily = styledAttributes!!.getString(R.styleable.EditTextEx_customFontFamily)
         }
         finally
         {

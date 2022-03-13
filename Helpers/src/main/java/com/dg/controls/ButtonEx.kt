@@ -37,8 +37,8 @@ class ButtonEx : AppCompatButton
         var styledAttributes: TypedArray? = null
         try
         {
-            styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.CustomFontFamily)
-            fontFamily = styledAttributes!!.getString(R.styleable.CustomFontFamily_customFontFamily)
+            styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.ButtonEx)
+            fontFamily = styledAttributes!!.getString(R.styleable.ButtonEx_customFontFamily)
         }
         finally
         {

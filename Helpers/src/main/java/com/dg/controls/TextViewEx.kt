@@ -37,8 +37,8 @@ class TextViewEx : AppCompatTextView
         var styledAttributes: TypedArray? = null
         try
         {
-            styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.CustomFontFamily)
-            fontFamily = styledAttributes!!.getString(R.styleable.CustomFontFamily_customFontFamily)
+            styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.TextViewEx)
+            fontFamily = styledAttributes!!.getString(R.styleable.TextViewEx_customFontFamily)
         }
         finally
         {

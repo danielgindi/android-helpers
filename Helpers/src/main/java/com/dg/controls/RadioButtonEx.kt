@@ -38,8 +38,8 @@ class RadioButtonEx : AppCompatRadioButton
         var styledAttributes: TypedArray? = null
         try
         {
-            styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.CustomFontFamily)
-            fontFamily = styledAttributes!!.getString(R.styleable.CustomFontFamily_customFontFamily)
+            styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.RadioButtonEx)
+            fontFamily = styledAttributes!!.getString(R.styleable.RadioButtonEx_customFontFamily)
         }
         finally
         {
