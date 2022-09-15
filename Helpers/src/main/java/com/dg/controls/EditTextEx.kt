@@ -91,12 +91,12 @@ class EditTextEx : AppCompatEditText
             return null
         if (!view.isEnabled)
             return null
-        if (!mCanFocusZeroSized && (bottom <= top || right <= left))
+        if (!mCanFocusZeroSized && (view.bottom <= view.top || view.right <= view.left))
             return null
-        if (isInTouchMode && !isFocusableInTouchMode)
+        if (view.isInTouchMode && !view.isFocusableInTouchMode)
             return null
 
-        var ancestor: ViewParent = parent
+        var ancestor = view.parent
         while (ancestor is ViewGroup)
         {
             val vgAncestor = ancestor
