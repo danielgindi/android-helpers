@@ -83,7 +83,7 @@ class EditTextEx : AppCompatEditText
      */
     override fun focusSearch(direction: Int): View?
     {
-        val view = super.focusSearch(direction)
+        val view = super.focusSearch(direction) ?: return null
 
         if (view.visibility != View.VISIBLE)
             return null
