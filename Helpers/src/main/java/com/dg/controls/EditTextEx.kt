@@ -106,6 +106,6 @@ class EditTextEx : AppCompatEditText
             ancestor = vgAncestor.parent
         }
 
-        return null
+        return view
     }
 }
