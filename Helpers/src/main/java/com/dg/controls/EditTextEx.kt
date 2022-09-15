@@ -4,7 +4,11 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Paint
 import android.graphics.Typeface
+import android.os.Build
 import android.util.AttributeSet
+import android.view.View
+import android.view.ViewGroup
+import android.view.ViewParent
 import androidx.appcompat.widget.AppCompatEditText
 import com.dg.R
 import com.dg.helpers.FontHelper
@@ -12,6 +16,8 @@ import com.dg.helpers.FontHelper
 @Suppress("unused")
 class EditTextEx : AppCompatEditText
 {
+    private val mCanFocusZeroSized = Build.VERSION.SDK_INT < Build.VERSION_CODES.P
+
     constructor(context: Context) : super(context)
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
@@ -70,5 +76,36 @@ class EditTextEx : AppCompatEditText
         {
             false
         }
+    }
+
+    /*
+     * This is a workaround for a bug in Android where onKeyUp throws if requestFocus() returns false
+     */
+    override fun focusSearch(direction: Int): View?
+    {
+        val view = super.focusSearch(direction)
+
+        if (view.visibility != View.VISIBLE)
+            return null
+        if (!view.isFocusable)
+            return null
+        if (!view.isEnabled)
+            return null
+        if (!mCanFocusZeroSized && (bottom <= top || right <= left))
+            return null
+        if (isInTouchMode && !isFocusableInTouchMode)
+            return null
+
+        var ancestor: ViewParent = parent
+        while (ancestor is ViewGroup)
+        {
+            val vgAncestor = ancestor
+            if (vgAncestor.descendantFocusability == ViewGroup.FOCUS_BLOCK_DESCENDANTS)
+                return null
+
+            ancestor = vgAncestor.parent
+        }
+
+        return null
     }
 }
