@@ -61,6 +61,42 @@ class SpannableStringBuilderEx : SpannableStringBuilder
     }
 
     /**
+     * Appends the character sequence `text` and spans `what` over the appended part.
+     * See [Spanned] for an explanation of what the flags mean.
+     * @param where the position to insert at.
+     * @param text the character sequence to append.
+     * @param what the object to be spanned over the appended text.
+     * @param flags see [Spanned].
+     * @return this `SpannableStringBuilderEx`.
+     */
+    fun insert(where: Int, text: CharSequence, what: Any, flags: Int): SpannableStringBuilder
+    {
+        insert(where, text)
+        setSpan(what, where, where + text.length, flags)
+        return this
+    }
+
+    /**
+     * Inserts the character sequence `text` and spans `spannables` over the appended part.
+     * @param where the position to insert at.
+     * @param text the character sequence to append.
+     * @param spannables a collection of spannables and their flags to be applied to this text.
+     * @return this `SpannableStringBuilderEx`.
+     */
+    fun insert(where: Int, text: CharSequence, spannables: Array<SpannableWithFlags>?): SpannableStringBuilder
+    {
+        insert(where, text)
+        if (spannables != null)
+        {
+            for (spannable in spannables)
+            {
+                setSpan(spannable.spannable, where, where + text.length, spannable.flags)
+            }
+        }
+        return this
+    }
+
+    /**
      * This class wraps a pair of a Spannable and Flags for spanning.
      */
     class SpannableWithFlags
