@@ -91,7 +91,7 @@ class FontHelper private constructor()
             }
             catch (e: Exception)
             {
-                Log.e("FontHelper", e.message)
+                Log.e("FontHelper", e.message ?: "")
                 return null
             }
 

@@ -1,0 +1,102 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+def isReleaseBuild() {
+    return !VERSION_NAME.contains("SNAPSHOT")
+}
+
+def getReleaseRepositoryUrl() {
+    return hasProperty('RELEASE_REPOSITORY_URL') ? RELEASE_REPOSITORY_URL
+            : "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+}
+
+def getSnapshotRepositoryUrl() {
+    return hasProperty('SNAPSHOT_REPOSITORY_URL') ? SNAPSHOT_REPOSITORY_URL
+            : "https://oss.sonatype.org/content/repositories/snapshots/"
+}
+
+def getRepositoryUsername() {
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+    return localProperties.getProperty("sonatypeUsername")
+}
+
+def getRepositoryPassword() {
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+    return localProperties.getProperty("sonatypePassword")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = GROUP
+                artifactId = POM_ARTIFACT_ID
+                version = VERSION_NAME
+                from components.release
+
+                pom {
+                    name = POM_NAME
+                    packaging = POM_PACKAGING
+                    description = POM_DESCRIPTION
+                    url = POM_URL
+
+                    scm {
+                        url = POM_SCM_URL
+                        connection = POM_SCM_CONNECTION
+                        developerConnection = POM_SCM_DEV_CONNECTION
+                    }
+
+                    licenses {
+                        license {
+                            name = POM_LICENSE_NAME
+                            url = POM_LICENSE_URL
+                            distribution = POM_LICENSE_DIST
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id = POM_DEVELOPER_ID
+                            name = POM_DEVELOPER_NAME
+                        }
+                    }
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                name = 'sonatype'
+                url = isReleaseBuild() ? getReleaseRepositoryUrl() : getSnapshotRepositoryUrl()
+
+                credentials {
+                    username = getRepositoryUsername()
+                    password = getRepositoryPassword()
+                }
+            }
+        }
+    }
+
+    signing {
+        required { isReleaseBuild() && gradle.taskGraph.hasTask("publish") }
+        sign publishing.publications.release
+    }
+
+    /*javadoc {
+        if (JavaVersion.current().isJava9Compatible()) {
+            options.addBooleanOption('html5', true)
+        }
+    }*/
+}
+
+nexusPublishing {
+    packageGroup = GROUP
+    repositories {
+        sonatype {
+            username = getRepositoryUsername()
+            password = getRepositoryPassword()
+        }
+    }
+}
