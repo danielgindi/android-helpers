@@ -12,8 +12,8 @@ object BigDecimalHelper
             null
         else value as? BigDecimal ?: when (value)
         {
-            is Double -> BigDecimal(value)
-            is Float -> BigDecimal(value.toDouble())
+            is Double -> if (value.isNaN()) null else BigDecimal(value)
+            is Float -> if (value.isNaN()) null else BigDecimal(value.toDouble())
             is Int -> BigDecimal(value)
             is Short -> BigDecimal(value.toInt())
             is String -> BigDecimal(value)
